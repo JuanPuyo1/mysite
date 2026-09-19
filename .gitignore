@@ -1,6 +1,9 @@
 venv/
 .venv/
-.env .env.local .env.development .env.production
+.env
+.env.local
+.env.development
+.env.production
 __pycache__/
 .DS_Store
 .idea/

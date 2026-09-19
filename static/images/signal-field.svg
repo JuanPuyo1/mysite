@@ -1,0 +1,20 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="520" height="420" viewBox="0 0 520 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Signal Field" clip-path="url(#clip0_0_4)">
+<path id="Vector" d="M520 0H0V420H520V0Z" fill="url(#paint0_linear_0_4)"/>
+<path id="Vector_2" opacity="0.85" d="M0 210C60 120 100 300 160 210C220 120 260 120 320 210C380 300 420 300 480 210C540 120 560 120 620 210" stroke="#1F6F78" stroke-width="2"/>
+<path id="Vector_3" opacity="0.45" d="M0 230C60 160 100 280 160 230C220 180 260 160 320 230C380 300 420 280 480 230C540 180 560 160 620 230" stroke="#1F6F78" stroke-width="1.5"/>
+<path id="Vector_4" opacity="0.55" d="M0 190C60 100 100 260 160 190C220 120 260 100 320 190C380 280 420 260 480 190C540 120 560 100 620 190" stroke="#4FA88A" stroke-width="1.25"/>
+<path id="Vector_5" d="M320 216C323.314 216 326 213.314 326 210C326 206.686 323.314 204 320 204C316.686 204 314 206.686 314 210C314 213.314 316.686 216 320 216Z" fill="#1F6F78"/>
+<path id="Vector_6" opacity="0.35" d="M320 228C329.941 228 338 219.941 338 210C338 200.059 329.941 192 320 192C310.059 192 302 200.059 302 210C302 219.941 310.059 228 320 228Z" stroke="#1F6F78"/>
+<path id="Vector_7" opacity="0.18" d="M320 246C339.882 246 356 229.882 356 210C356 190.118 339.882 174 320 174C300.118 174 284 190.118 284 210C284 229.882 300.118 246 320 246Z" stroke="#1F6F78"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_0_4" x1="0" y1="0" x2="410.6" y2="508.362" gradientUnits="userSpaceOnUse">
+<stop stop-color="#D7EBEC"/>
+<stop offset="1" stop-color="#F4F6F5"/>
+</linearGradient>
+<clipPath id="clip0_0_4">
+<rect width="520" height="420" fill="white"/>
+</clipPath>
+</defs>
+</svg>

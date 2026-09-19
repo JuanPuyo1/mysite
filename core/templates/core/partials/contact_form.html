@@ -1,0 +1,53 @@
+<form
+  id="contact-form"
+  hx-post="{% url 'contact' %}"
+  hx-target="#contact-form-wrapper"
+  hx-swap="innerHTML"
+  class="card rounded-xl border border-line bg-surface shadow-none"
+>
+  {% csrf_token %}
+  <div class="card-body gap-3 p-4 lg:gap-4 lg:p-6">
+    <div class="form-control">
+      <label class="label hidden py-0 lg:flex" for="{{ form.name.id_for_label }}">
+        <span class="label-text text-[13px] font-medium text-muted">Name</span>
+      </label>
+      {{ form.name }}
+      {% if form.name.errors %}
+      <p class="mt-1 text-sm text-error">{{ form.name.errors.0 }}</p>
+      {% endif %}
+    </div>
+
+    <div class="form-control">
+      <label class="label hidden py-0 lg:flex" for="{{ form.email.id_for_label }}">
+        <span class="label-text text-[13px] font-medium text-muted">Email</span>
+      </label>
+      {{ form.email }}
+      {% if form.email.errors %}
+      <p class="mt-1 text-sm text-error">{{ form.email.errors.0 }}</p>
+      {% endif %}
+    </div>
+
+    <div class="form-control">
+      <label class="label hidden py-0 lg:flex" for="{{ form.message.id_for_label }}">
+        <span class="label-text text-[13px] font-medium text-muted">Message</span>
+      </label>
+      {{ form.message }}
+      {% if form.message.errors %}
+      <p class="mt-1 text-sm text-error">{{ form.message.errors.0 }}</p>
+      {% endif %}
+    </div>
+
+    {% if form.non_field_errors %}
+    <p class="text-sm text-error">{{ form.non_field_errors.0 }}</p>
+    {% endif %}
+
+    <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+
+    <button
+      type="submit"
+      class="btn btn-primary mt-1 w-full rounded-lg border-0 bg-accent py-3.5 text-sm font-medium normal-case text-white hover:bg-accent"
+    >
+      Send message
+    </button>
+  </div>
+</form>

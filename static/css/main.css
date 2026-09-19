@@ -1,0 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@500;700&display=swap");
+
+:root {
+  --bg: #f4f6f5;
+  --ink: #141816;
+  --muted: #5c6660;
+  --accent: #1f6f78;
+  --accent-soft: #d7ebec;
+  --surface: #ffffff;
+  --line: #dce3df;
+  --contrib-1: #e8f0ed;
+  --contrib-2: #9bc9b8;
+  --contrib-3: #4fa88a;
+  --contrib-4: #1f6f78;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "IBM Plex Sans", sans-serif;
+  background-color: var(--bg);
+  color: var(--ink);
+}
+
+.font-display {
+  font-family: "Space Grotesk", sans-serif;
+}
+
+.bg-contrib-1 { background-color: var(--contrib-1); }
+.bg-contrib-2 { background-color: var(--contrib-2); }
+.bg-contrib-3 { background-color: var(--contrib-3); }
+.bg-contrib-4 { background-color: var(--contrib-4); }
+
+.contribution-cell-desktop {
+  width: 11px;
+  height: 11px;
+}
+
+.contribution-cell-mobile {
+  width: 8px;
+  height: 8px;
+}
+
+.contribution-cell {
+  will-change: transform, opacity;
+}
+
+#signal-field .signal-wave {
+  vector-effect: non-scaling-stroke;
+}
+
+#signal-field .signal-node,
+#signal-field .signal-ring {
+  transform-box: fill-box;
+  transform-origin: center;
+}
+
+.btn-primary,
+.btn-primary:hover {
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+[x-cloak] {
+  display: none !important;
+}

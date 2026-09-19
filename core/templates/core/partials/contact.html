@@ -1,0 +1,45 @@
+<section id="contact" class="bg-bg px-6 pb-12 pt-8 lg:px-20 lg:pb-16 lg:pt-20">
+  <div class="flex flex-col gap-4 lg:flex-row lg:gap-16">
+    <div class="flex flex-1 flex-col gap-4 lg:gap-4">
+      <h2 class="font-display text-[28px] font-bold tracking-[-0.5px] text-ink lg:text-[40px] lg:tracking-[-1px]">
+        Want to collaborate?
+      </h2>
+      <p class="hidden text-base leading-[26px] text-muted lg:block">
+        Open to research, product engineering, and BCI collaborations. Prefer email or LinkedIn.
+      </p>
+      <div class="flex flex-col gap-3 pt-0 lg:gap-3 lg:pt-4">
+        <a href="mailto:{{ contact.email }}" class="text-sm font-medium text-accent lg:text-[15px]">
+          {{ contact.email }}
+        </a>
+        <a
+          href="{{ contact.github }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden text-[15px] text-muted transition hover:text-ink lg:inline"
+        >
+          {{ contact.github_label }}
+        </a>
+        <a
+          href="{{ contact.linkedin }}"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="hidden text-[15px] text-muted transition hover:text-ink lg:inline"
+        >
+          {{ contact.linkedin_label }}
+        </a>
+      </div>
+    </div>
+
+    <div id="contact-form-wrapper" class="flex-1">
+      {% include "core/partials/contact_form.html" %}
+    </div>
+  </div>
+
+  <footer class="mt-8 flex flex-col gap-2 border-t border-line pt-6 text-[11px] text-muted lg:mt-6 lg:flex-row lg:items-center lg:justify-between lg:pt-6 lg:text-[13px]">
+    <p>
+      <span class="lg:hidden">© 2026 Esteban · Django · HTMX · Alpine · DaisyUI</span>
+      <span class="hidden lg:inline">© 2026 Juan Esteban Puyo Cubillos</span>
+    </p>
+    <p class="hidden lg:inline">Django · HTMX · Alpine · DaisyUI</p>
+  </footer>
+</section>

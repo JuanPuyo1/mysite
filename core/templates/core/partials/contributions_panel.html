@@ -1,0 +1,48 @@
+<div class="card rounded-xl border border-line bg-surface shadow-none">
+  <div class="card-body gap-3 p-4 lg:gap-4 lg:p-6">
+    <div id="contributions-grid" class="flex gap-0.5 overflow-x-auto lg:gap-[3px]">
+      {% for week in mobile_grid %}
+      <div class="flex flex-col gap-0.5 lg:hidden" data-week="{{ forloop.counter }}">
+        {% for level in week %}
+        <span
+          class="contribution-cell contribution-cell-mobile rounded-[2px] bg-contrib-{{ level|add:1 }}"
+          data-level="{{ level|add:1 }}"
+        ></span>
+        {% endfor %}
+      </div>
+      {% endfor %}
+
+      {% for week in desktop_grid %}
+      <div class="hidden flex-col gap-[3px] lg:flex" data-week="{{ forloop.counter }}">
+        {% for level in week %}
+        <span
+          class="contribution-cell contribution-cell-desktop rounded-[2px] bg-contrib-{{ level|add:1 }}"
+          data-level="{{ level|add:1 }}"
+        ></span>
+        {% endfor %}
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="hidden items-center justify-end gap-2 lg:flex">
+      <span class="text-xs text-muted">Less</span>
+      <span class="contribution-cell-desktop rounded-[2px] bg-contrib-1"></span>
+      <span class="contribution-cell-desktop rounded-[2px] bg-contrib-2"></span>
+      <span class="contribution-cell-desktop rounded-[2px] bg-contrib-3"></span>
+      <span class="contribution-cell-desktop rounded-[2px] bg-contrib-4"></span>
+      <span class="text-xs text-muted">More</span>
+    </div>
+
+    <p class="text-xs text-muted lg:text-[13px]">
+      {% if contributions_live %}
+      <span class="lg:hidden">Last 26 weeks · Live from @{{ github_username }}</span>
+      <span class="hidden lg:inline">
+        Live data from github.com/{{ github_username }} · HTMX partial refresh on the Django homepage
+      </span>
+      {% else %}
+      <span class="lg:hidden">Last 26 weeks · fallback data (GitHub unavailable)</span>
+      <span class="hidden lg:inline">Fallback data · unable to reach GitHub for @{{ github_username }}</span>
+      {% endif %}
+    </p>
+  </div>
+</div>

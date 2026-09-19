@@ -1,0 +1,40 @@
+<section id="experience" class="bg-bg px-6 py-8 lg:px-20 lg:py-16">
+  <div class="mb-4 flex flex-col gap-2 lg:mb-12 lg:gap-2">
+    <p class="text-xs font-medium uppercase tracking-[1px] text-muted lg:text-[13px] lg:tracking-[1.2px]">
+      Professional experience
+    </p>
+    <h2 class="font-display text-[26px] font-bold text-ink lg:text-[32px] lg:tracking-[-0.8px]">
+      <span class="lg:hidden">Where I've built systems</span>
+      <span class="hidden lg:inline">Identity systems, rehabilitation platforms, and product engineering.</span>
+    </h2>
+  </div>
+
+  <div class="flex flex-col">
+    {% for role in experience %}
+    <article class="border-b border-line py-4 last:border-b-0 lg:flex lg:gap-8 lg:py-6 {% if not role.mobile_visible %}hidden lg:flex{% endif %} {% if not forloop.last %}lg:border-b{% endif %}">
+      <p class="mb-1.5 shrink-0 text-[13px] font-medium text-muted lg:mb-0 lg:w-[140px] lg:text-sm">
+        <span class="lg:hidden">{{ role.period_mobile }}</span>
+        <span class="hidden lg:inline">{{ role.period }}</span>
+      </p>
+
+      <div class="flex flex-col gap-1.5 lg:gap-2">
+        <h3 class="text-base font-medium text-ink lg:text-lg">{{ role.title }}</h3>
+        <p class="hidden text-sm font-medium text-accent lg:block">{{ role.company }}</p>
+        <p class="text-sm leading-[22px] text-muted lg:text-[15px]">
+          <span class="lg:hidden">{{ role.description_mobile }}</span>
+          <span class="hidden lg:inline">{{ role.description }}</span>
+        </p>
+        {% if role.tags %}
+        <div class="hidden flex-wrap gap-2 pt-1 lg:flex">
+          {% for tag in role.tags %}
+          <span class="badge badge-sm rounded-lg border-0 bg-accent-soft px-2.5 py-1.5 text-xs font-medium text-accent">
+            {{ tag }}
+          </span>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
