@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/juanpuyo1/mystic:latest
+    image: ghcr.io/juanpuyo1/mysite:latest
     container_name: esteban-site
     restart: unless-stopped
     env_file:

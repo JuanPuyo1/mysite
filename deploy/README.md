@@ -40,12 +40,12 @@ The app binds to `127.0.0.1` only — Caddy is the public entry point on `:443`.
 
 ## Deploy a new release
 
-After pushing to `main`, GitHub Actions builds and pushes `ghcr.io/juanpuyo1/mystic:latest`.
+After pushing to `main`, GitHub Actions builds and pushes `ghcr.io/juanpuyo1/mysite:latest`.
 
 On the VPS:
 
 ```bash
 cd /opt/esteban-site
-docker pull ghcr.io/juanpuyo1/mystic:latest
+docker pull ghcr.io/juanpuyo1/mysite:latest
 docker compose up -d
 ```
