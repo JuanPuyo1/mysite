@@ -4,6 +4,7 @@ from django.test import RequestFactory, SimpleTestCase, override_settings
 
 from core.forms import ContactForm
 from core.github import _cells_to_weeks, _parse_calendar_cells, get_contributions
+from core.recaptcha import verify_recaptcha
 
 
 SAMPLE_HTML = """
@@ -86,3 +87,23 @@ class ContactFormTests(SimpleTestCase):
         )
         self.assertTrue(form.is_valid())
         mock_verify.assert_called_once_with("valid-token", "127.0.0.1")
+
+
+class RecaptchaVerificationTests(SimpleTestCase):
+    @override_settings(RECAPTCHA_SECRET_KEY="test-secret", RECAPTCHA_SCORE_THRESHOLD=0.5)
+    @patch("core.recaptcha.json.load", return_value={"success": True, "score": 0.9, "action": "contact"})
+    @patch("core.recaptcha.urllib.request.urlopen")
+    def test_accepts_valid_v3_response(self, _mock_urlopen, _mock_json):
+        self.assertTrue(verify_recaptcha("token", "127.0.0.1"))
+
+    @override_settings(RECAPTCHA_SECRET_KEY="test-secret", RECAPTCHA_SCORE_THRESHOLD=0.5)
+    @patch("core.recaptcha.json.load", return_value={"success": True, "score": 0.2, "action": "contact"})
+    @patch("core.recaptcha.urllib.request.urlopen")
+    def test_rejects_low_score(self, _mock_urlopen, _mock_json):
+        self.assertFalse(verify_recaptcha("token"))
+
+    @override_settings(RECAPTCHA_SECRET_KEY="test-secret", RECAPTCHA_SCORE_THRESHOLD=0.5)
+    @patch("core.recaptcha.json.load", return_value={"success": True, "score": 0.9, "action": "login"})
+    @patch("core.recaptcha.urllib.request.urlopen")
+    def test_rejects_wrong_action(self, _mock_urlopen, _mock_json):
+        self.assertFalse(verify_recaptcha("token"))

@@ -3,6 +3,7 @@
   hx-post="{% url 'contact' %}"
   hx-target="#contact-form-wrapper"
   hx-swap="innerHTML"
+  data-recaptcha-site-key="{{ recaptcha_site_key }}"
   class="card rounded-xl border border-line bg-surface shadow-none"
 >
   {% csrf_token %}
@@ -41,7 +42,7 @@
     <p class="text-sm text-error">{{ form.non_field_errors.0 }}</p>
     {% endif %}
 
-    <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}"></div>
+    <input type="hidden" name="g-recaptcha-response" value="">
 
     <button
       type="submit"
@@ -49,5 +50,12 @@
     >
       Send message
     </button>
+
+    <p class="text-[11px] leading-relaxed text-muted">
+      Protected by reCAPTCHA.
+      <a class="underline" href="https://policies.google.com/privacy" rel="noopener noreferrer" target="_blank">Privacy</a>
+      and
+      <a class="underline" href="https://policies.google.com/terms" rel="noopener noreferrer" target="_blank">Terms</a>.
+    </p>
   </div>
 </form>

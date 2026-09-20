@@ -21,10 +21,50 @@ function setContactPlaceholders() {
       : "What are you working on?";
 }
 
-document.addEventListener("DOMContentLoaded", setContactPlaceholders);
-document.body.addEventListener("htmx:afterSwap", (event) => {
-  setContactPlaceholders();
-  if (event.target.id === "contact-form-wrapper" && window.grecaptcha) {
-    window.grecaptcha.reset();
+function attachRecaptchaToContactForm(form) {
+  if (!form || form.dataset.recaptchaAttached === "true") {
+    return;
   }
+
+  const siteKey = form.dataset.recaptchaSiteKey;
+  if (!siteKey || !window.grecaptcha) {
+    return;
+  }
+
+  form.dataset.recaptchaAttached = "true";
+  form.addEventListener("submit", (event) => {
+    if (form.dataset.recaptchaReady === "true") {
+      form.dataset.recaptchaReady = "false";
+      return;
+    }
+
+    event.preventDefault();
+    event.stopImmediatePropagation();
+
+    window.grecaptcha.ready(() => {
+      window.grecaptcha
+        .execute(siteKey, { action: "contact" })
+        .then((token) => {
+          const tokenInput = form.querySelector('input[name="g-recaptcha-response"]');
+          if (tokenInput) {
+            tokenInput.value = token;
+          }
+          form.dataset.recaptchaReady = "true";
+          window.htmx.trigger(form, "submit");
+        })
+        .catch(() => {
+          form.dataset.recaptchaReady = "false";
+        });
+    });
+  }, true);
+}
+
+function initContactFormEnhancements(root = document) {
+  setContactPlaceholders();
+  attachRecaptchaToContactForm(root.querySelector("#contact-form"));
+}
+
+document.addEventListener("DOMContentLoaded", () => initContactFormEnhancements());
+document.body.addEventListener("htmx:afterSwap", (event) => {
+  initContactFormEnhancements(event.target);
 });

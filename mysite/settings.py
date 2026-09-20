@@ -162,10 +162,8 @@ CACHES = {
     }
 }
 
-RECAPTCHA_SITE_KEY = os.environ.get(
-    "RECAPTCHA_SITE_KEY",
-    "6Ld4UMMtAAAAACNLN_jPgSeTbZyxuAc6kwNqViEM",
-)
+RECAPTCHA_SITE_KEY = os.environ.get("RECAPTCHA_SITE_KEY", "")
 RECAPTCHA_SECRET_KEY = os.environ.get("RECAPTCHA_SECRET_KEY", "")
+RECAPTCHA_SCORE_THRESHOLD = float(os.environ.get("RECAPTCHA_SCORE_THRESHOLD", "0.5"))
 
 GOOGLE_ANALYTICS_ID = os.environ.get("GOOGLE_ANALYTICS_ID", "")
