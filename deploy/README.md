@@ -46,6 +46,8 @@ On the VPS:
 
 ```bash
 cd /opt/esteban-site
+mkdir -p data
+chown 1000:1000 data
 docker pull ghcr.io/juanpuyo1/mysite:latest
 docker compose up -d
 ```

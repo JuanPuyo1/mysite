@@ -42,8 +42,6 @@ RUN useradd --create-home --uid 1000 appuser \
     && mkdir -p /data \
     && chown -R appuser:appuser /app /data
 
-USER appuser
-
 ENV DATABASE_PATH=/data/db.sqlite3
 
 EXPOSE 8000
