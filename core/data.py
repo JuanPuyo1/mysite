@@ -188,7 +188,7 @@ NORT = {
     ),
     "description_mobile": "Non-invasive neural decoding for rehabilitation.",
     "tags": ["BCI", "EEG + sEMG", "Wearable"],
-    "url": "#nort",
+    "url": "https://nortproject.systems",
 }
 
 CONTACT = {
