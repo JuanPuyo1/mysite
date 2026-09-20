@@ -16,3 +16,6 @@ __pycache__/
 .mypy_cache/
 staticfiles/
 mediafiles/
+node_modules/
+static/css/tailwind.css
+static/vendor/

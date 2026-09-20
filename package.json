@@ -1,0 +1,17 @@
+{
+  "name": "esteban-site",
+  "private": true,
+  "scripts": {
+    "build:css": "tailwindcss -i ./static/css/input.css -o ./static/css/tailwind.css --minify",
+    "copy:vendor": "node scripts/copy-vendor.mjs",
+    "build": "npm run copy:vendor && npm run build:css"
+  },
+  "devDependencies": {
+    "alpinejs": "3.14.9",
+    "autoprefixer": "^10.4.21",
+    "daisyui": "4.12.14",
+    "gsap": "3.12.7",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17"
+  }
+}

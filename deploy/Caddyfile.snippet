@@ -1,0 +1,10 @@
+# Add this site block to your existing Caddyfile.
+# HOST_PORT in docker-compose defaults to 8001 (change if that port is taken).
+
+juanestebanpuyo.com {
+	reverse_proxy 127.0.0.1:8001
+}
+
+www.juanestebanpuyo.com {
+	redir https://juanestebanpuyo.com{uri} permanent
+}

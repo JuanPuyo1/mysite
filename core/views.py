@@ -1,4 +1,5 @@
-from django.core.mail import send_mail
+from django.conf import settings
+from django.core.mail import EmailMessage
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
 
@@ -45,13 +46,16 @@ def contributions_partial(request):
 def contact_submit(request):
     form = ContactForm(request.POST, request=request)
     if form.is_valid():
-        send_mail(
+        EmailMessage(
             subject=f"Portfolio contact from {form.cleaned_data['name']}",
-            message=form.cleaned_data["message"],
-            from_email=form.cleaned_data["email"],
-            recipient_list=["esteban.cubi1@gmail.com"],
-            fail_silently=False,
-        )
+            body=(
+                f"From: {form.cleaned_data['name']} <{form.cleaned_data['email']}>\n\n"
+                f"{form.cleaned_data['message']}"
+            ),
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            to=[settings.CONTACT_RECIPIENT_EMAIL],
+            reply_to=[form.cleaned_data["email"]],
+        ).send(fail_silently=False)
         if request.headers.get("HX-Request"):
             return render(request, "core/partials/contact_success.html")
         return render(
