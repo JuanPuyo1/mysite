@@ -18,12 +18,12 @@
   {% endif %}
   <script defer src="{% static 'vendor/gsap.min.js' %}"></script>
   <script defer src="{% static 'vendor/ScrollTrigger.min.js' %}"></script>
+  <script defer src="{% static 'js/main.js' %}"></script>
   <script defer src="{% static 'vendor/alpine.min.js' %}"></script>
   <script defer src="https://unpkg.com/htmx.org@2.0.4"></script>
   <script src="https://www.google.com/recaptcha/api.js" async defer></script>
   <script defer src="{% static 'js/signal-field.js' %}"></script>
   <script defer src="{% static 'js/contributions.js' %}"></script>
-  <script defer src="{% static 'js/main.js' %}"></script>
 </head>
 <body class="font-body bg-bg text-ink antialiased">
   {% block content %}{% endblock %}

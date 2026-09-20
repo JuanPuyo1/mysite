@@ -12,7 +12,7 @@
       class="text-sm font-medium text-muted lg:hidden"
       @click="toggle()"
       aria-expanded="false"
-      :aria-expanded="open.toString()"
+      :aria-expanded="isOpen.toString()"
     >
       Menu
     </button>
@@ -35,7 +35,7 @@
 
   <div
     class="mt-4 flex flex-col gap-3 border-t border-line pt-4 lg:hidden"
-    x-show="open"
+    x-show="isOpen"
     x-cloak
     x-transition
   >
